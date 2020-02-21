@@ -22,3 +22,17 @@ after_success:
   - docker push karan4336/multi-docker-nginx
   - docker push karan4336/multi-docker-server
   - docker push   karan4336/multi-docker-worker
+
+# deploy from travis to elastic bean
+deploy:
+  edge: true
+  provider: elasticbeasnstalk
+  region: us-east-2
+  app: multi-docker
+  env:  MultiDocker-env
+  bucket_name: elasticbeanstalk-us-east-2-159991650841
+  bucket_path: docker-multi
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY 

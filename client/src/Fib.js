@@ -11,6 +11,12 @@ class Fib extends Component {
   componentDidMount() {
     this.fetchValues();
     this.fetchIndexes();
+    this.callExternalApi();
+  }
+
+  async callExternalApi() {
+    const values = await axios.get('https://jsonplaceholder.typicode.com/todos/1');
+   console.log('values', values);
   }
 
   async fetchValues() {
